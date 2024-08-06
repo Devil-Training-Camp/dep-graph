@@ -1,6 +1,6 @@
 import path from 'path'
-import { PnpmDepGraph } from '../../core/src/graph/pnpm'
-import { startWebProject } from '../../web/src/server/index' // mode_modules确保导入路径正确
+import { PnpmDepGraph } from 'core/src/graph/pnpm'
+import { startWebProject } from 'web/server/index' // mode_modules确保导入路径正确
 import { type DepGraph } from './types'
 interface Params {
   graph: DepGraph

@@ -4,7 +4,7 @@
       <h1>Dependency Graph</h1>
     </el-header>
     <el-main>
-      <DependencyGraph :data="dependencyData" />
+      <DependencyGraph v-loading="loading" :data="dependencyData" />
     </el-main>
   </el-container>
 </template>
@@ -16,11 +16,20 @@ import { ref, onMounted } from 'vue'
 import { type DepGraphNode } from '../types/graph'
 
 const dependencyData = ref<DepGraphNode[]>([])
+const loading = ref(false)
 
 // 获取依赖关系图数据
 const getDependencyGraph = async (): Promise<DepGraphNode[]> => {
-  const response = await fetch('/api/graph-data')
-  dependencyData.value = await response.json()
+  loading.value = true
+
+  try {
+    const response = await fetch('/api/graph-data')
+    dependencyData.value = await response.json()
+  } catch (error) {
+    console.error(error)
+  } finally {
+    loading.value = false
+  }
   return dependencyData.value
 }
 

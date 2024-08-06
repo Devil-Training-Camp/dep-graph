@@ -1,12 +1,13 @@
 import express from 'express'
 import path from 'path'
 import open from 'open'
+import getPort from 'get-port'
 
 let app: express.Application
 
-export const startWebProject = (data: any): void => {
+export const startWebProject = async (data: any): Promise<void> => {
   app = express()
-  const port = 3000
+  const port = await getPort({ port: [3000, 3001, 3002] })
 
   // 设置静态文件目录为Vue构建后的dist目录
   const publicDir = path.join(__dirname, '../../dist')
@@ -31,9 +32,4 @@ export const startWebProject = (data: any): void => {
     console.log(`Web project is running at http://localhost:${port}`)
   })
   open(`http://localhost:${port}`)
-}
-
-export const renderGraph = (graphData: any): void => {
-  console.log('Rendering graph with data:', graphData)
-  // 这里可以调用实际的渲染逻辑，例如将数据发送到前端页面
 }

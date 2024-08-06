@@ -35,12 +35,8 @@ class RequestHttp {
      */
     this.service.interceptors.request.use(
       (config: any) => {
-        const token = localStorage.getItem('token') || ''
         return {
           ...config,
-          headers: {
-            'x-access-token': token, // 请求头中携带token信息
-          },
         }
       },
       (error: AxiosError) => {
@@ -86,8 +82,8 @@ class RequestHttp {
   }
   handleCode(code: number): void {
     switch (code) {
-      case 401:
-        ElMessage.error('登录失败，请重新登录')
+      case 500:
+        ElMessage.error('服务器内部错误')
         break
       default:
         ElMessage.error('请求失败')

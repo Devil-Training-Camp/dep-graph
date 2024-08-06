@@ -1,0 +1,23 @@
+{
+  "name": "dep-graph",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "syh",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Devil-Training-Camp/dep-graph.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Devil-Training-Camp/dep-graph/issues"
+  },
+  "homepage": "https://github.com/Devil-Training-Camp/dep-graph#readme",
+  "description": "",
+  "dependencies": {
+    "web": "^0.0.2"
+  }
+}
