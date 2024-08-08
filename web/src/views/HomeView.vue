@@ -4,13 +4,15 @@
       <h1>Dependency Graph</h1>
     </el-header>
     <el-main>
-      <DependencyGraph v-loading="loading" :data="dependencyData" />
+      <Loading v-if="loading" />
+      <DependencyGraph v-else :data="dependencyData" />
     </el-main>
   </el-container>
 </template>
 
 <script setup lang="ts">
 import DependencyGraph from '@/components/DependencyGraph.vue'
+import Loading from '@/components/Loading.vue'
 import 'element-plus/dist/index.css'
 import { ref, onMounted } from 'vue'
 import { type DepGraphNode } from '../types/graph'
